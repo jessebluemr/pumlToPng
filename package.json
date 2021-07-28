@@ -1,0 +1,14 @@
+{
+    "name": "puml-to-png",
+    "version": "0.0.1",
+    "main": "index.js",
+    "bin": "./index.js",
+    "dependencies": {
+        "plantuml-encoder": "1.4.0",
+        "fast-glob": "3.2.5"
+    },
+    "scripts": {
+        "test": "puml-to-png"
+    },
+    "license": "Apache-2.0"
+}

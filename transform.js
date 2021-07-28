@@ -4,7 +4,7 @@ const fs = require("fs/promises");
 const http = require("http");
 
 async function transformAllPumlFilesToPng(server = "http://www.plantuml.com/plantuml", dir = process.cwd()) {
-    const stream = fglob.stream(["**/*.puml"], { dot: true, onlyFiles: true, cwd: dir });
+    const stream = fglob.stream(["**/*.puml"], { dot: true, onlyFiles: true, cwd: dir, absolute: true });
     let count = 0;
     for await (const entry of stream) {
         const outFile = entry.replace(/\.puml$/, ".png");

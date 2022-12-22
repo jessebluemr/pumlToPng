@@ -8,7 +8,8 @@
         "fast-glob": "3.2.5"
     },
     "scripts": {
-        "test": "puml-to-png"
+        "test": "node index.js",
+        "test-https": "node index.js --url https://plantuml.test.conterra.de"
     },
     "license": "Apache-2.0"
 }

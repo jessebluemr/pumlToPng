@@ -2,6 +2,7 @@ const plantumlEncoder = require("plantuml-encoder")
 const fglob = require("fast-glob");
 const fs = require("fs/promises");
 const http = require("http");
+const https = require("https");
 
 async function transformAllPumlFilesToPng(server = "http://www.plantuml.com/plantuml", dir = process.cwd()) {
     const stream = fglob.stream(["**/*.puml"], { dot: true, onlyFiles: true, cwd: dir, absolute: true });
@@ -41,9 +42,11 @@ function createImageSrc(serverUrl, text, format) {
 }
 
 
-function fetch(url) {
+function fetch(urlstr) {
+    const url = new URL(urlstr);
     return new Promise((resolve, reject) => {
-        http.get(url, function (res) {
+        let client = url.protocol === "https:" ? https: http;
+        client.get(url, function (res) {
             var data = [];
             res.on('data', function (chunk) {
                 data.push(chunk);
